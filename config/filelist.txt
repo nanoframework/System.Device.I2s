@@ -1,0 +1,1 @@
+**/System.Device.I2s.*
