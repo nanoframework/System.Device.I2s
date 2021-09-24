@@ -13,20 +13,18 @@ namespace System.Device.I2s
     public sealed class I2sConnectionSettings
     {
 
-        private I2sMode _i2sMode = I2sMode.PDM;
+        private I2sMode _i2sMode = I2sMode.Pdm;
 
         private int _sampleRate = 44_100;
 
-        private I2sBitsPerSample _i2sBitsPerSample = I2sBitsPerSample.BIT16;
+        private I2sBitsPerSample _i2sBitsPerSample = I2sBitsPerSample.Bit16;
 
-        private I2sChannelFormat _i2sChannelFormat = I2sChannelFormat.I2S_CHANNEL_FMT_RIGHT_LEFT;
+        private I2sChannelFormat _i2sChannelFormat = I2sChannelFormat.RightLeft;
 
-        private I2sCommunicationFormat _i2sConnectionFormat = I2sCommunicationFormat.STAND_I2S;
+        private I2sCommunicationFormat _i2sConnectionFormat = I2sCommunicationFormat.StandI2s;
 
         // default intrrupt priority
         private int _allocFlags = 0;  
-
-        private DataFlow _dataFlow = DataFlow.MsbFirst;
 
         private int _bufferCount = 8;
 
@@ -58,7 +56,6 @@ namespace System.Device.I2s
             Mode = other.Mode;
             SampleRate = other.SampleRate;
             CommunicationFormat = other.CommunicationFormat;
-            DataFlow = other.DataFlow;
             ChannelFormat = other.ChannelFormat;
             BufferLength = other.BufferLength;
             BufferCount = other.BufferCount;

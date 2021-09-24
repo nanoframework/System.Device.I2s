@@ -13,11 +13,11 @@ namespace System.Device.I2s
         /// <summary>
         /// I2S 1 channel (mono)
         /// </summary>
-        MONO = 1,
+        Mono = 1,
 
         /// <summary>
         /// I2S 2 channel (stereo)
         /// </summary>
-        STEREO = 2,
+        Stereo = 2,
     }
 }
