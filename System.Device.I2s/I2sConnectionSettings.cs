@@ -22,7 +22,7 @@ namespace System.Device.I2s
 
         private I2sChannelFormat _i2sChannelFormat = I2sChannelFormat.RightLeft;
 
-        private I2sCommunicationFormat _i2sConnectionFormat = I2sCommunicationFormat.StandI2s;
+        private I2sCommunicationFormat _i2sConnectionFormat = I2sCommunicationFormat.StandardI2s;
 
         /// <summary>
         /// Initializes new instance of I2sConnectionSettings.
