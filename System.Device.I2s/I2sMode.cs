@@ -8,6 +8,7 @@ namespace System.Device.I2s
     /// <summary>
     /// Defines how data is synchronized between devices on a I2s bus.
     /// </summary>
+    [Flags]
     public enum I2sMode
     {
         /// <summary>
