@@ -29,6 +29,5 @@ namespace System.Device.I2s
         /// I2S bits per sample: 32-bits
         /// </summary>
         Bit32 = 32
-
     }
 }
