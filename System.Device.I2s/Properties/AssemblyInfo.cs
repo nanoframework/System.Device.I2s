@@ -11,12 +11,9 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("nanoFramework System.Device.I2c")]
-[assembly: AssemblyDescription("")]
 [assembly: AssemblyCompany(".NET nanoFramework contributors")]
 [assembly: AssemblyProduct(".NET nanoFramework System.Device.I2c")]
 [assembly: AssemblyCopyright("Copyright (c) .NET Foundation and Contributors")]
-[assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]
 
 ////////////////////////////////////////////////////////////////
 // update this whenever the native assembly signature changes //
