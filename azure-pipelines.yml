@@ -1,5 +1,6 @@
 # Copyright (c) .NET Foundation and Contributors
 # See LICENSE file in the project root for full license information.
+
 trigger:
   branches:
     include:
@@ -19,6 +20,10 @@ trigger:
       - config/*
       - .github/*
 
+  tags:
+    include: 
+      - v*
+
 # PR always trigger build
 pr:
   autoCancel: true
@@ -36,7 +41,7 @@ pool:
 
 variables:
   DOTNET_NOLOGO: true
-  solution: 'nanoFramework.System.Device.I2s*.sln'
+  solution: 'nanoFramework.System.Device.I2s.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
   nugetPackageName: 'nanoFramework.System.Device.I2s'

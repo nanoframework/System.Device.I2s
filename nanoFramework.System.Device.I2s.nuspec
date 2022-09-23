@@ -4,8 +4,7 @@
     <id>nanoFramework.System.Device.I2s</id>
     <version>$version$</version>
     <title>nanoFramework.System.Device.I2s</title>
-    <authors>.NET nanoFramework project contributors</authors>
-    <owners>nanoframework,dotnetfoundation</owners>
+    <authors>nanoframework</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <license type="file">LICENSE.md</license>
     <releaseNotes>
