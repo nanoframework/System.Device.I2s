@@ -1,33 +1,39 @@
 using System;
 using System.Device.I2s;
-using System.Diagnostics;
+using System.IO;
 using System.Threading;
+using AudioPlayer;
 using nanoFramework.Hardware.Esp32;
 
-Debug.WriteLine("Hello from nanoFramework!");
 Configuration.SetPinFunction(4, DeviceFunction.I2S1_BCK);
 Configuration.SetPinFunction(18, DeviceFunction.I2S1_DATA_OUT);
-Configuration.SetPinFunction(19, DeviceFunction.I2S1_WS);
-Configuration.SetPinFunction(21, DeviceFunction.I2S1_MCK);
+Configuration.SetPinFunction(15, DeviceFunction.I2S1_WS);
+//Configuration.SetPinFunction(21, DeviceFunction.I2S1_MCK);
 
-var i2s = new I2sDevice(new I2sConnectionSettings(1)
+var beepGenerator = new SinusGenerator();
+
+var i2S = new I2sDevice(new I2sConnectionSettings(1)
 {
     Mode = I2sMode.Master | I2sMode.Tx | I2sMode.Pdm,
     CommunicationFormat = I2sCommunicationFormat.StandardI2s,
 
-    SampleRate = 44_100,
-    BitsPerSample = I2sBitsPerSample.Bit16,
+    SampleRate = beepGenerator.SampleRate,
+    BitsPerSample = I2sBitsPerSample.Bit8,
     ChannelFormat = I2sChannelFormat.AllRight
 });
 
-var buff = new byte[882];
-var rnd = new Random(42);
-rnd.NextBytes(buff);
+var buffer = new SpanByte(new byte[200]);
 
-SpanByte span = buff;
+var msDuration = 200;
+var inputStream = new MemoryStream();
+beepGenerator.WriteBeep(inputStream, 5000, msDuration);
+inputStream.Seek(0, SeekOrigin.Begin);
 
-while (true)
+var len = inputStream.Read(buffer);
+while (len > 0)
 {
-    i2s.Write(span);
+    i2S.Write(buffer);
     Thread.Sleep(10);
+
+    len = inputStream.Read(buffer);
 }
