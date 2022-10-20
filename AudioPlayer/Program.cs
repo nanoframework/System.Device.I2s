@@ -15,8 +15,6 @@ uint cs = 5;
 Configuration.SetPinFunction(23, DeviceFunction.SPI1_MOSI);
 Configuration.SetPinFunction(18, DeviceFunction.SPI1_CLOCK);
 Configuration.SetPinFunction(19, DeviceFunction.SPI1_MISO);
-
-
 var audioFilesSource = new AudioFilesSource(1, cs);
 
 uint sampleRate = 16000;
@@ -44,8 +42,6 @@ var i2S = new I2sDevice(new I2sConnectionSettings(1)
 //    while (len > 0)
 //    {
 //        i2S.Write(buffer);
-
-//        Thread.Sleep(10);
 //        len = memoryStream.Read(buffer);
 //    }
 //}
