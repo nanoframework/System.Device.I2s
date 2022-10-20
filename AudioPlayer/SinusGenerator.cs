@@ -10,22 +10,21 @@ namespace AudioPlayer
         private const int HeaderSize = 8;
         private const double Tau = 2 * Math.PI;
         private const int WaveSize = 4;
-        private readonly short _bitsPerSample;
         private readonly int _bytesPerSecond;
         private readonly short _frameSize;
 
-        private readonly short _tracks;
-
-        public SinusGenerator(int sampleRate = 16000, short bitsPerSample = 8, short tracks = 1)
+        public SinusGenerator(int sampleRate = 16000, short bitsPerSample = 8, short channels = 1)
         {
             SampleRate = sampleRate;
-            _bitsPerSample = bitsPerSample;
-            _tracks = tracks;
-            _frameSize = (short)(tracks * ((bitsPerSample + 7) / 8));
+            BitsPerSample = bitsPerSample;
+            Channels = channels;
+            _frameSize = (short)(channels * ((bitsPerSample + 7) / 8));
             _bytesPerSecond = SampleRate * _frameSize;
         }
 
         public int SampleRate { get; }
+        public short BitsPerSample { get; }
+        public short Channels { get; }
 
         public int CalculateFileSize(int msDuration)
         {
@@ -36,7 +35,7 @@ namespace AudioPlayer
             return fileSize;
         }
 
-        public void WriteBeep(Stream target, ushort frequency, int msDuration, ushort volume = 16383)
+        public void WriteBeep(MemoryStream target, ushort frequency, int msDuration, ushort volume = 16383)
         {
             var writer = new BinaryWriter(target);
 
@@ -50,11 +49,11 @@ namespace AudioPlayer
             writer.Write(0x20746D66); // "fmt "
             writer.Write(FormatChunkSize);
             writer.Write(FormatType);
-            writer.Write(_tracks);
+            writer.Write(Channels);
             writer.Write(SampleRate);
             writer.Write(_bytesPerSecond);
             writer.Write(_frameSize);
-            writer.Write(_bitsPerSample);
+            writer.Write(BitsPerSample);
             writer.Write(0x61746164); // "data"
             writer.Write(dataChunkSize);
             {

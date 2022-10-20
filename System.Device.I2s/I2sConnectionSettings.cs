@@ -23,6 +23,8 @@ namespace System.Device.I2s
         private I2sChannelFormat _i2sChannelFormat = I2sChannelFormat.RightLeft;
 
         private I2sCommunicationFormat _i2sConnectionFormat = I2sCommunicationFormat.StandardI2s;
+        
+        private int _bufferSize = 10000;
 
         /// <summary>
         /// Initializes new instance of I2sConnectionSettings.
@@ -49,6 +51,7 @@ namespace System.Device.I2s
             CommunicationFormat = other.CommunicationFormat;
             ChannelFormat = other.ChannelFormat;
             BitsPerSample = other.BitsPerSample;
+            BufferSize = other.BufferSize;
         }
 
         /// <summary>
@@ -127,6 +130,19 @@ namespace System.Device.I2s
             {
                 _sampleRate = value;
             }
+        }
+
+        /// <summary>
+        /// Buffer Size used to define the DMA buffer.
+        /// This size is required to calculate the right amount of <c>dma_buf_count</c>.
+        /// </summary>
+        /// <remarks>
+        /// Defaults to <c>10000</c>.
+        /// </remarks>
+        public int BufferSize
+        {
+            get => _bufferSize;
+            set => _bufferSize = value;
         }
     }
 }

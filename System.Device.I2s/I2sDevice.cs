@@ -32,27 +32,7 @@ namespace System.Device.I2s
         /// </param>
         [MethodImpl(MethodImplOptions.InternalCall)]
         public extern void Read(SpanByte buffer);
-
-        /// <summary>
-        /// Reads data from the I2s device.
-        /// </summary>
-        /// <param name="buffer">
-        /// The buffer to read the data from the I2s device.
-        /// The length of the buffer determines how much data to read from the I2s device.
-        /// </param>
-        [MethodImpl(MethodImplOptions.InternalCall)]
-        public extern void Read(ushort[] buffer);
-
-        /// <summary>
-        /// Writes a byte to the I2s device.
-        /// </summary>
-        /// <param name="buffer">
-        /// The buffer that contains the data to be written to the I2s device.
-        /// The data should not include the I2s device address.
-        /// </param>
-        [MethodImpl(MethodImplOptions.InternalCall)]
-        public extern void Write(ushort[] buffer);
-
+        
         /// <summary>
         /// Writes data to the I2s device.
         /// </summary>

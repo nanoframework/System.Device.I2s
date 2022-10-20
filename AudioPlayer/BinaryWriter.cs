@@ -5,9 +5,9 @@ namespace AudioPlayer
 {
     public class BinaryWriter
     {
-        private readonly Stream _stream;
+        private readonly MemoryStream _stream;
 
-        public BinaryWriter(Stream stream)
+        public BinaryWriter(MemoryStream stream)
         {
             _stream = stream;
         }
@@ -18,11 +18,11 @@ namespace AudioPlayer
 
             var bytes = BitConverter.GetBytes(i);
             _stream.Write(bytes, 0, 4);
+        }
 
-            if (_stream.Position != currentLocation + 4)
-            {
-                // something went wrong ?
-            }
+        public void Write(byte b)
+        {
+            _stream.WriteByte(b);
         }
 
         public void Flush()
