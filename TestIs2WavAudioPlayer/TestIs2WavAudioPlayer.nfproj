@@ -18,11 +18,10 @@
   </PropertyGroup>
   <Import Project="$(NanoFrameworkProjectSystemPath)NFProjectSystem.props" Condition="Exists('$(NanoFrameworkProjectSystemPath)NFProjectSystem.props')" />
   <ItemGroup>
-    <Compile Include="AudioFilesSource.cs" />
-    <Compile Include="SinusGenerator.cs" />
-    <Compile Include="BinaryWriter.cs" />
+    <Compile Include="I2sWavPlayer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WavFileHeader.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="mscorlib">

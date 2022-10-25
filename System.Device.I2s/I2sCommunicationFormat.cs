@@ -13,22 +13,12 @@ namespace System.Device.I2s
         /// <summary>
         /// I2S communication I2S Philips standard, data launch at second BCK
         /// </summary>
-        StandardI2s,
+        I2S,
 
         /// <summary>
-        /// Standard I2S with LSB
+        /// I2S communication MSB alignment standard, data launch at first BCK
         /// </summary>
-        StandardI2sLsb,
-
-        /// <summary>
-        /// Standard I2S with MSB
-        /// </summary>
-        StandardI2sMsb,
-
-        /// <summary>
-        /// Standard I2S with PCM
-        /// </summary>
-        StandardI2sPcm,
+        Msb,
 
         /// <summary>
         /// PCM Short standard, also known as DSP mode. The period of synchronization signal (WS) is 1 bck cycle.
@@ -36,8 +26,13 @@ namespace System.Device.I2s
         PcmShort,
 
         /// <summary>
-        /// PCM Long standard. The period of synchronization signal (WS) is channel_bit*bck cycles.
+        /// PCM Long standard. The period of synchronization signal (WS) is channel_bit * bck cycles.
         /// </summary>
         PcmLong,
+
+        /// <summary>
+        /// Standard max
+        /// </summary>
+        Max,
     }
 }

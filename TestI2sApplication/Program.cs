@@ -14,7 +14,7 @@ I2sDevice i2s = new(new I2sConnectionSettings(1) {
     BitsPerSample = I2sBitsPerSample.Bit16, 
     ChannelFormat = I2sChannelFormat.AllRight, 
     Mode = I2sMode.Master | I2sMode.Rx | I2sMode.Pdm, 
-    CommunicationFormat = I2sCommunicationFormat.StandardI2s, 
+    CommunicationFormat = I2sCommunicationFormat.I2S, 
     SampleRate = 44_100 });
 
 SpanByte buff = new byte[1024];

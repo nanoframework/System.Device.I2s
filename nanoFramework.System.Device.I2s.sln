@@ -15,7 +15,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{11A8DD76-328B-46DF-9F39-F559912D0360}") = "TestI2sApplication", "TestI2sApplication\TestI2sApplication.nfproj", "{A2D510AD-1108-4BEB-BE32-49B8D9B93F6D}"
 EndProject
-Project("{11A8DD76-328B-46DF-9F39-F559912D0360}") = "AudioPlayer", "AudioPlayer\AudioPlayer.nfproj", "{41877EC4-4FE6-42FC-A899-A08A4B52CCDC}"
+Project("{11A8DD76-328B-46DF-9F39-F559912D0360}") = "TestIs2WavAudioPlayer", "TestIs2WavAudioPlayer\TestIs2WavAudioPlayer.nfproj", "{41877EC4-4FE6-42FC-A899-A08A4B52CCDC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
