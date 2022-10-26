@@ -42,7 +42,6 @@
   <Import Project="$(NanoFrameworkProjectSystemPath)NFProjectSystem.props" Condition="Exists('$(NanoFrameworkProjectSystemPath)NFProjectSystem.props')" />
   <ItemGroup>
     <Compile Include="I2sBitsPerSample.cs" />
-    <Compile Include="I2sChannel.cs" />
     <Compile Include="I2sChannelFormat.cs" />
     <Compile Include="I2sCommunicationFormat.cs" />
     <Compile Include="I2sConnectionSettings.cs" />
