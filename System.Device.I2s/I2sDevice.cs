@@ -26,6 +26,9 @@ namespace System.Device.I2s
         /// <summary>
         /// Reads data from the I2s device.
         /// </summary>
+        /// <remarks>
+        /// This is not fully tested and might not work.
+        /// </remarks>
         /// <param name="buffer">
         /// The buffer to read the data from the I2s device.
         /// The length of the buffer determines how much data to read from the I2s device.
