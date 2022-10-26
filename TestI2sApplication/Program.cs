@@ -12,10 +12,10 @@ Configuration.SetPinFunction(34, DeviceFunction.I2S1_MDATA_IN);
 
 I2sDevice i2s = new(new I2sConnectionSettings(1) { 
     BitsPerSample = I2sBitsPerSample.Bit16, 
-    ChannelFormat = I2sChannelFormat.AllRight, 
-    Mode = I2sMode.Master | I2sMode.Rx | I2sMode.Pdm, 
+    ChannelFormat = I2sChannelFormat.OnlyLeft, 
+    Mode = I2sMode.Master | I2sMode.Rx | I2sMode.Pdm,
     CommunicationFormat = I2sCommunicationFormat.I2S, 
-    SampleRate = 44_100 });
+    SampleRate = 16_000 });
 
 SpanByte buff = new byte[1024];
 i2s.Read(buff);
