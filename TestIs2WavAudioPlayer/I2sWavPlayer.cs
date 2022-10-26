@@ -89,20 +89,30 @@ namespace AudioPlayer
         {
             _stream.Seek(44, SeekOrigin.Begin);
 
-            var buffer = new byte[10000];
+            var buffer = new byte[10000]; 
+            var spanBytes = new SpanByte(buffer);
+            SpanByte writeSpanByte;
+            int length;
+
             try
             {
                 while (true)
                 {
-                    var len = _stream.Read(buffer, 0, buffer.Length);
-                    if (len == 0)
+                    writeSpanByte = spanBytes;
+                    length = _stream.Read(buffer, 0, buffer.Length);
+
+                    if (length == 0)
                     {
                         // end of file, quit:
                         break;
                     }
 
-                    var spanBytes = new SpanByte(buffer, 0, len);
-                    _i2S.Write(spanBytes);
+                    if (length != buffer.Length)
+                    {
+                        writeSpanByte = spanBytes.Slice(0, length);
+                    }
+
+                    _i2S.Write(writeSpanByte);
                 }
             }
             catch (Exception e)
