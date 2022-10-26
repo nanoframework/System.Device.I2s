@@ -32,11 +32,9 @@ sdCard.Mount();
 // Tested with 16 bits, 16 kHz, Mono with a MAX98357A breakout board.
 // source: https://www.videvo.net/royalty-free-music-track/variation/232917/
 var audioFile = "D:\\Variation-CLJ013901.wav";
-using (var player = new I2sWavPlayer(I2sWavPlayer.Bus.One, audioFile))
-{
-    player.Play();
-    player.Dispose();
-}
+var player = new I2sWavPlayer(I2sWavPlayer.Bus.One, audioFile);
+player.Play();
+player.Dispose();
 
 sdCard.Unmount();
 sdCard.Dispose();
