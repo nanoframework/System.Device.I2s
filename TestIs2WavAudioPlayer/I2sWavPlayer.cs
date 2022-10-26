@@ -11,6 +11,11 @@ using nanoFramework.Hardware.Esp32;
 
 namespace AudioPlayer
 {
+    /// <summary>
+    ///     This class is intended to be used for a simple I2S WAV file player on ESP32.
+    ///     You have to provide pin configuration for I2S communication and a full path to the
+    ///     WAV file you want to play.
+    /// </summary>
     public class I2sWavPlayer : IDisposable
     {
         public enum Bus
@@ -22,6 +27,15 @@ namespace AudioPlayer
         private readonly I2sDevice _i2S;
         private readonly FileStream _stream;
 
+        /// <summary>
+        ///     Creating a new instance of <see cref="I2sWavPlayer" />.
+        /// </summary>
+        /// <param name="bus">The I2S bus ID on ESP32 plattforms.</param>
+        /// <param name="audioFile">Full path to WAV file.</param>
+        /// <param name="bckPin">The Pin ID of the BCK pin. (32 for <see cref="Bus.One" />).</param>
+        /// <param name="dataPin">The Pin ID of the Data Out pin. (33 for <see cref="Bus.One" />).</param>
+        /// <param name="wsPin">The Pin ID of the WS pin. (25 for <see cref="Bus.One" />).</param>
+        /// <exception cref="IOException">Throws an IOException if the WAV file provided does not have at least 44 bytes (header).</exception>
         public I2sWavPlayer(Bus bus, string audioFile, int bckPin = 32, int dataPin = 33, int wsPin = 25)
         {
             switch (bus)
@@ -31,14 +45,12 @@ namespace AudioPlayer
                     Configuration.SetPinFunction(bckPin, DeviceFunction.I2S1_BCK);
                     Configuration.SetPinFunction(dataPin, DeviceFunction.I2S1_DATA_OUT);
                     Configuration.SetPinFunction(wsPin, DeviceFunction.I2S1_WS);
-                    //Configuration.SetPinFunction(5, DeviceFunction.I2S1_MCK);
                     break;
                 case Bus.Two:
                     // I2S Audio device:
                     Configuration.SetPinFunction(bckPin, DeviceFunction.I2S2_BCK);
                     Configuration.SetPinFunction(dataPin, DeviceFunction.I2S2_DATA_OUT);
                     Configuration.SetPinFunction(wsPin, DeviceFunction.I2S2_WS);
-                    //Configuration.SetPinFunction(5, DeviceFunction.I2S2_MCK);
                     break;
             }
 
@@ -46,7 +58,10 @@ namespace AudioPlayer
 
             var header = new byte[44];
             var len = _stream.Read(header, 0, header.Length);
-            if (len != 44) throw new IOException("Not enough bytes in the wav file header.");
+            if (len != 44)
+            {
+                throw new IOException("Not enough bytes in the wav file header.");
+            }
 
             var headerParser = new WavFileHeader(header);
 
@@ -81,8 +96,10 @@ namespace AudioPlayer
                 {
                     var len = _stream.Read(buffer, 0, buffer.Length);
                     if (len == 0)
+                    {
                         // end of file, quit:
                         break;
+                    }
 
                     var spanBytes = new SpanByte(buffer, 0, len);
                     _i2S.Write(spanBytes);
