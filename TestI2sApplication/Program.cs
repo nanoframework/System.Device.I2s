@@ -1,3 +1,8 @@
+//
+// Copyright (c) .NET Foundation and Contributors
+// See LICENSE file in the project root for full license information.
+//
+
 using nanoFramework.Hardware.Esp32;
 using System;
 using System.Device.I2s;
