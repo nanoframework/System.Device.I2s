@@ -306,7 +306,7 @@ namespace AudioPlayer
         }
 
         /// <summary>
-        /// Gets the WAV file header as byte[].
+        ///     Gets the WAV file header as byte[].
         /// </summary>
         /// <returns>The header byte[].</returns>
         public byte[] GetHeaderData()

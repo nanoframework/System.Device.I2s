@@ -13,7 +13,10 @@ using nanoFramework.System.IO.FileSystem;
 // re-plugin the USB cable to the MCU will re-start the application
 // therefore might re-open the wav file again and also "lock" it again.
 // thus we explicitly wait until Debugger is attached, so that we can "reset"
-while (!Debugger.IsAttached) Thread.Sleep(500);
+while (!Debugger.IsAttached)
+{
+    Thread.Sleep(500);
+}
 
 // SD Card:
 uint cs = 5;
@@ -29,7 +32,7 @@ sdCard.Mount();
 // Tested with 16 bits, 16 kHz, Mono with a MAX98357A breakout board.
 // source: https://www.videvo.net/royalty-free-music-track/variation/232917/
 var audioFile = "D:\\Variation-CLJ013901.wav";
-using (var player = new I2sWavPlayer(I2sWavPlayer.Bus.One, audioFile, 32, 33, 25))
+using (var player = new I2sWavPlayer(I2sWavPlayer.Bus.One, audioFile))
 {
     player.Play();
     player.Dispose();
