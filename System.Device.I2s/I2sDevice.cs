@@ -16,13 +16,15 @@ namespace System.Device.I2s
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private bool _disposed;
 
+        private readonly I2sConnectionSettings _connectionSettings;
+
         /// <summary>
         ///     Create an I2s Device
         /// </summary>
         /// <param name="settings">Connection settings</param>
         public I2sDevice(I2sConnectionSettings settings)
         {
-            ConnectionSettings = settings;
+            _connectionSettings = settings;
 
             // call native init to allow HAL/PAL inits related with I2s hardware
             NativeInit();
@@ -33,7 +35,7 @@ namespace System.Device.I2s
         ///     created
         ///     so the object returned will be a clone of the settings object.
         /// </summary>
-        public I2sConnectionSettings ConnectionSettings { get; }
+        public I2sConnectionSettings ConnectionSettings => _connectionSettings;
 
         /// <summary>
         ///     Reads data from the I2s device.
