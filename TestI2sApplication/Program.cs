@@ -9,9 +9,19 @@ using System.Diagnostics;using System.IO;
 using System.Threading;
 using AudioPlayer;
 using nanoFramework.Hardware.Esp32;
+using nanoFramework.System.IO.FileSystem;
 
 Debug.WriteLine("Hello from I2S!");
 
+// SD Card (for WAV file output):
+uint cs = 5;
+Configuration.SetPinFunction(23, DeviceFunction.SPI1_MOSI);
+Configuration.SetPinFunction(18, DeviceFunction.SPI1_CLOCK);
+Configuration.SetPinFunction(19, DeviceFunction.SPI1_MISO);
+var sdCard = new SDCard(new SDCard.SDCardSpiParameters { spiBus = 1, chipSelectPin = cs });
+sdCard.Mount();
+
+// configure I2s for recording:
 Configuration.SetPinFunction(0, DeviceFunction.I2S1_WS);
 Configuration.SetPinFunction(34, DeviceFunction.I2S1_MDATA_IN);
 
