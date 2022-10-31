@@ -1,7 +1,9 @@
-﻿// Licensed to the .NET Foundation under one or more agreements.
-// The .NET Foundation licenses this file to you under the MIT license.
-// See the LICENSE file in the project root for more information.
+﻿//
+// Copyright (c) .NET Foundation and Contributors
+// See LICENSE file in the project root for full license information.
+//
 
+using System.Diagnostics;
 using System.Runtime.CompilerServices;
 
 namespace System.Device.I2s
@@ -11,17 +13,29 @@ namespace System.Device.I2s
     /// </summary>
     public class I2sDevice : IDisposable
     {
-        [Diagnostics.DebuggerBrowsable(Diagnostics.DebuggerBrowsableState.Never)]
-        private readonly I2sConnectionSettings _connectionSettings;
-
-        [Diagnostics.DebuggerBrowsable(Diagnostics.DebuggerBrowsableState.Never)]
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private bool _disposed;
 
+        private readonly I2sConnectionSettings _connectionSettings;
+
         /// <summary>
-        /// The connection settings of a device on an I2s bus. The connection settings are immutable after the device is created
+        /// Create an I2s Device
+        /// </summary>
+        /// <param name="settings">Connection settings</param>
+        public I2sDevice(I2sConnectionSettings settings)
+        {
+            _connectionSettings = settings;
+
+            // call native init to allow HAL/PAL inits related with I2s hardware
+            NativeInit();
+        }
+
+        /// <summary>
+        /// The connection settings of a device on an I2s bus. The connection settings are immutable after the device is
+        /// created
         /// so the object returned will be a clone of the settings object.
         /// </summary>
-        public I2sConnectionSettings ConnectionSettings { get => _connectionSettings; }
+        public I2sConnectionSettings ConnectionSettings => _connectionSettings;
 
         /// <summary>
         /// Reads data from the I2s device.
@@ -32,26 +46,6 @@ namespace System.Device.I2s
         /// </param>
         [MethodImpl(MethodImplOptions.InternalCall)]
         public extern void Read(SpanByte buffer);
-
-        /// <summary>
-        /// Reads data from the I2s device.
-        /// </summary>
-        /// <param name="buffer">
-        /// The buffer to read the data from the I2s device.
-        /// The length of the buffer determines how much data to read from the I2s device.
-        /// </param>
-        [MethodImpl(MethodImplOptions.InternalCall)]
-        public extern void Read(ushort[] buffer);
-
-        /// <summary>
-        /// Writes a byte to the I2s device.
-        /// </summary>
-        /// <param name="buffer">
-        /// The buffer that contains the data to be written to the I2s device.
-        /// The data should not include the I2s device address.
-        /// </param>
-        [MethodImpl(MethodImplOptions.InternalCall)]
-        public extern void Write(ushort[] buffer);
 
         /// <summary>
         /// Writes data to the I2s device.
@@ -73,18 +67,6 @@ namespace System.Device.I2s
             return new I2sDevice(settings);
         }
 
-        /// <summary>
-        /// Create an I2s Device
-        /// </summary>
-        /// <param name="settings">Connection settings</param>
-        public I2sDevice(I2sConnectionSettings settings)
-        {
-            _connectionSettings = settings;
-
-            // call native init to allow HAL/PAL inits related with I2s hardware
-            NativeInit();
-        }
-
         #region IDisposable Support
 
         private void Dispose(bool disposing)
@@ -104,7 +86,7 @@ namespace System.Device.I2s
         }
 
         /// <summary>
-        /// <inheritdoc cref="IDisposable.Dispose"/>
+        /// <inheritdoc cref="IDisposable.Dispose" />
         /// </summary>
         public void Dispose()
         {
