@@ -6,44 +6,44 @@
 namespace System.Device.I2s
 {
     /// <summary>
-    ///     Defines how data is synchronized between devices on a I2s bus.
+    /// Defines how data is synchronized between devices on a I2s bus.
     /// </summary>
     [Flags]
     public enum I2sMode
     {
         /// <summary>
-        ///     Master mode
+        /// Master mode
         /// </summary>
         Master = 1 << 0,
 
         /// <summary>
-        ///     Slave mode
+        /// Slave mode
         /// </summary>
         Slave = 1 << 1,
 
         /// <summary>
-        ///     TX mode
+        /// TX mode
         /// </summary>
         Tx = 1 << 2,
 
         /// <summary>
-        ///     RX mode
+        /// RX mode
         /// </summary>
         Rx = 1 << 3,
 
         /// <summary>
-        ///     Output I2S data to built-in DAC, no matter the data format is 16bit or 32 bit, the DAC module will only take the
-        ///     8bits from MSB
+        /// Output I2S data to built-in DAC, no matter the data format is 16bit or 32 bit, the DAC module will only take the
+        /// 8bits from MSB
         /// </summary>
         DacBuiltIn = 1 << 4,
 
         /// <summary>
-        ///     Input I2S data from built-in ADC, each data can be 12-bit width at most
+        /// Input I2S data from built-in ADC, each data can be 12-bit width at most
         /// </summary>
         AdcBuiltIn = 1 << 5,
 
         /// <summary>
-        ///     PDM mode
+        /// PDM mode
         /// </summary>
         Pdm = 1 << 6
     }

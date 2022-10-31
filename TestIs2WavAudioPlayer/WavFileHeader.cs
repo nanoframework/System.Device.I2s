@@ -9,17 +9,17 @@ using System.Text;
 namespace AudioPlayer
 {
     /// <summary>
-    ///     This class can be used to parse / create a WAV file header.
+    /// This class can be used to parse / create a WAV file header.
     /// </summary>
     /// <remarks>
-    ///     For WAV header specification see <see href="https://docs.fileformat.com/audio/wav/" />.
+    /// For WAV header specification see <see href="https://docs.fileformat.com/audio/wav/" />.
     /// </remarks>
     public class WavFileHeader
     {
         private readonly byte[] _header;
 
         /// <summary>
-        ///     Creates a new instance of <see cref="WavFileHeader" /> based on the provided header bytes.
+        /// Creates a new instance of <see cref="WavFileHeader" /> based on the provided header bytes.
         /// </summary>
         /// <param name="header">The header bytes to use as backing for all supported header properties.</param>
         /// <exception cref="ArgumentException">Throws if the header array does not contain exactly 44 bytes.</exception>
@@ -43,8 +43,8 @@ namespace AudioPlayer
         }
 
         /// <summary>
-        ///     Marks the file as a riff file.
-        ///     Characters are each 1 byte long.
+        /// Marks the file as a riff file.
+        /// Characters are each 1 byte long.
         /// </summary>
         public string RiffChunkId
         {
@@ -62,8 +62,8 @@ namespace AudioPlayer
         }
 
         /// <summary>
-        ///     Size of the overall file - 8 bytes, in bytes (32-bit integer).
-        ///     Typically, you’d fill this in after creation.
+        /// Size of the overall file - 8 bytes, in bytes (32-bit integer).
+        /// Typically, you’d fill this in after creation.
         /// </summary>
         public int FileSize
         {
@@ -76,8 +76,8 @@ namespace AudioPlayer
         }
 
         /// <summary>
-        ///     File Type Header.
-        ///     For our purposes, it must always equal to “WAVE”.
+        /// File Type Header.
+        /// For our purposes, it must always equal to “WAVE”.
         /// </summary>
         public string WaveFormat
         {
@@ -95,8 +95,8 @@ namespace AudioPlayer
         }
 
         /// <summary>
-        ///     Format chunk marker (4 characters).
-        ///     Includes trailing <see cref="string.Empty" />.
+        /// Format chunk marker (4 characters).
+        /// Includes trailing <see cref="string.Empty" />.
         /// </summary>
         public string FormatChunkId
         {
@@ -114,7 +114,7 @@ namespace AudioPlayer
         }
 
         /// <summary>
-        ///     Length of format data.
+        /// Length of format data.
         /// </summary>
         public int FormatChunkSize
         {
@@ -127,53 +127,53 @@ namespace AudioPlayer
         }
 
         /// <summary>
-        ///     AudioFormat: Indicates how the sample data for the wave file is stored.
-        ///     The most common format is integer PCM, which has a code of 1.
-        ///     <para>
-        ///         Other formats include:
-        ///         <list type="bullet">
-        ///             <item>
-        ///                 <term>
-        ///                     2
-        ///                 </term>
-        ///                 <description>
-        ///                     ADPCM
-        ///                 </description>
-        ///             </item>
-        ///             <item>
-        ///                 <term>
-        ///                     3
-        ///                 </term>
-        ///                 <description>
-        ///                     floating point PCM
-        ///                 </description>
-        ///             </item>
-        ///             <item>
-        ///                 <term>
-        ///                     6
-        ///                 </term>
-        ///                 <description>
-        ///                     A-law
-        ///                 </description>
-        ///             </item>
-        ///             <item>
-        ///                 <term>
-        ///                     7
-        ///                 </term>
-        ///                 <description>
-        ///                     μ-law
-        ///                 </description>
-        ///             </item>
-        ///             <item>
-        ///                 <term>
-        ///                     65534
-        ///                 </term>
-        ///                 <description>
-        ///                     WaveFormatExtensible
-        ///                 </description>
-        ///             </item>
-        ///         </list>
-        ///     </para>
+        /// AudioFormat: Indicates how the sample data for the wave file is stored.
+        /// The most common format is integer PCM, which has a code of 1.
+        /// <para>
+        /// Other formats include:
+        /// <list type="bullet">
+        ///     <item>
+        ///         <term>
+        ///             2
+        ///         </term>
+        ///         <description>
+        ///             ADPCM
+        ///         </description>
+        ///     </item>
+        ///     <item>
+        ///         <term>
+        ///             3
+        ///         </term>
+        ///         <description>
+        ///             floating point PCM
+        ///         </description>
+        ///     </item>
+        ///     <item>
+        ///         <term>
+        ///             6
+        ///         </term>
+        ///         <description>
+        ///             A-law
+        ///         </description>
+        ///     </item>
+        ///     <item>
+        ///         <term>
+        ///             7
+        ///         </term>
+        ///         <description>
+        ///             μ-law
+        ///         </description>
+        ///     </item>
+        ///     <item>
+        ///         <term>
+        ///             65534
+        ///         </term>
+        ///         <description>
+        ///             WaveFormatExtensible
+        ///         </description>
+        ///     </item>
+        /// </list>
+        /// </para>
         /// </summary>
         public short AudioFormat
         {
@@ -186,8 +186,8 @@ namespace AudioPlayer
         }
 
         /// <summary>
-        ///     Number of channels: Typically a file will have 1 channel (mono) or 2 channels (stereo).
-        ///     A 5.1 surround sound file will have 6 channels.
+        /// Number of channels: Typically a file will have 1 channel (mono) or 2 channels (stereo).
+        /// A 5.1 surround sound file will have 6 channels.
         /// </summary>
         public short NumberOfChannels
         {
@@ -200,8 +200,8 @@ namespace AudioPlayer
         }
 
         /// <summary>
-        ///     Sample Rate: The number of sample frames that occur each second.
-        ///     A typical value would be 44100, which is the same as an audio CD.
+        /// Sample Rate: The number of sample frames that occur each second.
+        /// A typical value would be 44100, which is the same as an audio CD.
         /// </summary>
         public int SampleRate
         {
@@ -214,15 +214,15 @@ namespace AudioPlayer
         }
 
         /// <summary>
-        ///     Bytes per second
-        ///     <para>
-        ///         The spec calls this byte rate, which means the number of bytes required for one second of audio data. This is
-        ///         equal to the bytes per sample frame times the sample rate.
-        ///     </para>
-        ///     <para>
-        ///         So with a bytes per sample frame of 4, and a sample
-        ///         rate of 44100, this should equal 176400.
-        ///     </para>
+        /// Bytes per second
+        /// <para>
+        /// The spec calls this byte rate, which means the number of bytes required for one second of audio data. This is
+        /// equal to the bytes per sample frame times the sample rate.
+        /// </para>
+        /// <para>
+        /// So with a bytes per sample frame of 4, and a sample
+        /// rate of 44100, this should equal 176400.
+        /// </para>
         /// </summary>
         public int BytesPerSecond
         {
@@ -235,12 +235,12 @@ namespace AudioPlayer
         }
 
         /// <summary>
-        ///     Bytes per sample frame
-        ///     <para>
-        ///         Called block align by the spec, this is the number of
-        ///         bytes required to store a single sample frame,
-        ///         i.e. a single sample for each channel.
-        ///     </para>
+        /// Bytes per sample frame
+        /// <para>
+        /// Called block align by the spec, this is the number of
+        /// bytes required to store a single sample frame,
+        /// i.e. a single sample for each channel.
+        /// </para>
         /// </summary>
         public short BytesPerSampleFrame
         {
@@ -253,10 +253,10 @@ namespace AudioPlayer
         }
 
         /// <summary>
-        ///     Bits per sample
-        ///     <para>
-        ///         For integer PCM data, typical values will be 8, 16, or 32.
-        ///     </para>
+        /// Bits per sample
+        /// <para>
+        /// For integer PCM data, typical values will be 8, 16, or 32.
+        /// </para>
         /// </summary>
         public short BitsPerSample
         {
@@ -269,10 +269,10 @@ namespace AudioPlayer
         }
 
         /// <summary>
-        ///     Marks the start of the data chunk.
-        ///     <para>
-        ///         Should always be "data" for PCM WAV files.
-        ///     </para>
+        /// Marks the start of the data chunk.
+        /// <para>
+        /// Should always be "data" for PCM WAV files.
+        /// </para>
         /// </summary>
         public string DataChunkId
         {
@@ -290,10 +290,10 @@ namespace AudioPlayer
         }
 
         /// <summary>
-        ///     Data chunk size
-        ///     <para>
-        ///         The size of the chunk data.
-        ///     </para>
+        /// Data chunk size
+        /// <para>
+        /// The size of the chunk data.
+        /// </para>
         /// </summary>
         public int DataChunkSize
         {
@@ -306,7 +306,7 @@ namespace AudioPlayer
         }
 
         /// <summary>
-        ///     Gets the WAV file header as byte[].
+        /// Gets the WAV file header as byte[].
         /// </summary>
         /// <returns>The header byte[].</returns>
         public byte[] GetHeaderData()

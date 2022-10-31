@@ -12,9 +12,9 @@ using nanoFramework.Hardware.Esp32;
 namespace AudioPlayer
 {
     /// <summary>
-    ///     This class is intended to be used for a simple I2S WAV file player on ESP32.
-    ///     You have to provide pin configuration for I2S communication and a full path to the
-    ///     WAV file you want to play.
+    /// This class is intended to be used for a simple I2S WAV file player on ESP32.
+    /// You have to provide pin configuration for I2S communication and a full path to the
+    /// WAV file you want to play.
     /// </summary>
     public class I2sWavPlayer : IDisposable
     {
@@ -28,7 +28,7 @@ namespace AudioPlayer
         private readonly FileStream _stream;
 
         /// <summary>
-        ///     Creating a new instance of <see cref="I2sWavPlayer" />.
+        /// Creating a new instance of <see cref="I2sWavPlayer" />.
         /// </summary>
         /// <param name="bus">The I2S bus ID on ESP32 plattforms.</param>
         /// <param name="audioFile">Full path to WAV file.</param>

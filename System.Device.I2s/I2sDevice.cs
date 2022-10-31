@@ -9,7 +9,7 @@ using System.Runtime.CompilerServices;
 namespace System.Device.I2s
 {
     /// <summary>
-    ///     The communications channel to a device on an I2s bus.
+    /// The communications channel to a device on an I2s bus.
     /// </summary>
     public class I2sDevice : IDisposable
     {
@@ -19,7 +19,7 @@ namespace System.Device.I2s
         private readonly I2sConnectionSettings _connectionSettings;
 
         /// <summary>
-        ///     Create an I2s Device
+        /// Create an I2s Device
         /// </summary>
         /// <param name="settings">Connection settings</param>
         public I2sDevice(I2sConnectionSettings settings)
@@ -31,34 +31,34 @@ namespace System.Device.I2s
         }
 
         /// <summary>
-        ///     The connection settings of a device on an I2s bus. The connection settings are immutable after the device is
-        ///     created
-        ///     so the object returned will be a clone of the settings object.
+        /// The connection settings of a device on an I2s bus. The connection settings are immutable after the device is
+        /// created
+        /// so the object returned will be a clone of the settings object.
         /// </summary>
         public I2sConnectionSettings ConnectionSettings => _connectionSettings;
 
         /// <summary>
-        ///     Reads data from the I2s device.
+        /// Reads data from the I2s device.
         /// </summary>
         /// <param name="buffer">
-        ///     The buffer to read the data from the I2s device.
-        ///     The length of the buffer determines how much data to read from the I2s device.
+        /// The buffer to read the data from the I2s device.
+        /// The length of the buffer determines how much data to read from the I2s device.
         /// </param>
         [MethodImpl(MethodImplOptions.InternalCall)]
         public extern void Read(SpanByte buffer);
 
         /// <summary>
-        ///     Writes data to the I2s device.
+        /// Writes data to the I2s device.
         /// </summary>
         /// <param name="buffer">
-        ///     The buffer that contains the data to be written to the I2s device.
-        ///     The data should not include the I2s device address.
+        /// The buffer that contains the data to be written to the I2s device.
+        /// The data should not include the I2s device address.
         /// </param>
         [MethodImpl(MethodImplOptions.InternalCall)]
         public extern void Write(SpanByte buffer);
 
         /// <summary>
-        ///     Creates a communications channel to a device on an I2s bus running on the current platform
+        /// Creates a communications channel to a device on an I2s bus running on the current platform
         /// </summary>
         /// <param name="settings">The connection settings of a device on an I2s bus.</param>
         /// <returns>A communications channel to a device on an I2s bus</returns>
@@ -86,7 +86,7 @@ namespace System.Device.I2s
         }
 
         /// <summary>
-        ///     <inheritdoc cref="IDisposable.Dispose" />
+        /// <inheritdoc cref="IDisposable.Dispose" />
         /// </summary>
         public void Dispose()
         {
