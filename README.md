@@ -10,7 +10,7 @@
 
 | Component | Build Status | NuGet Package |
 |:-|---|---|
-| System.Device.I2s | [![Build Status](https://dev.azure.com/nanoframework/System.Device.I2s/_apis/build/status/System.Device.I2s?branchName=main)](https://dev.azure.com/nanoframework/System.Device.I2s/_build/latest?definitionId=78&branchName=main) | [![NuGet](https://img.shields.io/nuget/v/nanoFramework.System.Device.I2s.svg?label=NuGet&style=flat&logo=nuget)](https://www.nuget.org/packages/nanoFramework.System.Device.I2s/) |
+| System.Device.I2s | [![Build Status](https://dev.azure.com/nanoframework/System.Device.I2s/_apis/build/status/System.Device.I2s?repoName=nanoframework%2FSystem.Device.I2s&branchName=main)](https://dev.azure.com/nanoframework/System.Device.I2s/_build/latest?definitionId=78&repoName=nanoframework%2FSystem.Device.I2s&branchName=main) | [![NuGet](https://img.shields.io/nuget/v/nanoFramework.System.Device.I2s.svg?label=NuGet&style=flat&logo=nuget)](https://www.nuget.org/packages/nanoFramework.System.Device.I2s/) |
 
 ## Feedback and documentation
 
