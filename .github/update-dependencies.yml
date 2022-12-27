@@ -17,7 +17,6 @@ jobs:
   update-dependencies:
     name: nanoFramework
     uses: nanoframework/nf-tools/.github/workflows/update-dependencies.yml@main
+    secrets: inherit
     with:
       solutionsToCheck: 'nanoFramework.System.Device.I2s.sln'
-    secrets:
-      githubAuth: ${{ secrets.NFBOT_GITHUB_ACTIONS }}
