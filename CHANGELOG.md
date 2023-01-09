@@ -2,7 +2,15 @@
 
 ## [Unreleased](https://github.com/nanoframework/System.Device.I2s/tree/HEAD)
 
-[Full Changelog](https://github.com/nanoframework/System.Device.I2s/compare/1b79c9dbcd1af9210ecaf8d8106eb743c8634bf3...HEAD)
+[Full Changelog](https://github.com/nanoframework/System.Device.I2s/compare/v1.0.3...HEAD)
+
+**Documentation and other chores:**
+
+- Update 2 NuGet dependencies [\#4](https://github.com/nanoframework/System.Device.I2s/pull/4)
+
+## [v1.0.3](https://github.com/nanoframework/System.Device.I2s/tree/v1.0.3) (2022-10-31)
+
+[Full Changelog](https://github.com/nanoframework/System.Device.I2s/compare/1b79c9dbcd1af9210ecaf8d8106eb743c8634bf3...v1.0.3)
 
 **Implemented enhancements:**
 
