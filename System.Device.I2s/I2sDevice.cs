@@ -45,7 +45,7 @@ namespace System.Device.I2s
         /// The length of the buffer determines how much data to read from the I2s device.
         /// </param>
         [MethodImpl(MethodImplOptions.InternalCall)]
-        public extern void Read(SpanByte buffer);
+        public extern void Read(Span<byte> buffer);
 
         /// <summary>
         /// Writes data to the I2s device.
@@ -55,7 +55,7 @@ namespace System.Device.I2s
         /// The data should not include the I2s device address.
         /// </param>
         [MethodImpl(MethodImplOptions.InternalCall)]
-        public extern void Write(SpanByte buffer);
+        public extern void Write(ReadOnlySpan<byte> buffer);
 
         /// <summary>
         /// Creates a communications channel to a device on an I2s bus running on the current platform
