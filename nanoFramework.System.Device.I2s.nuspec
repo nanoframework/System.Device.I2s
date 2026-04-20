@@ -20,7 +20,7 @@ This package requires a target with System.Device.I2s v$nativeVersion$ (checksum
     <tags>nanoFramework C# csharp netmf netnf System.Device.I2s</tags>
     <dependencies>
       <group targetFramework=".NETnanoFramework1.0">
-        <dependency id="nanoFramework.CoreLibrary" version="2.0.0-preview.35" />
+        <dependency id="nanoFramework.CoreLibrary" version="2.0.0-preview.39" />
       </group>
     </dependencies>
   </metadata>
